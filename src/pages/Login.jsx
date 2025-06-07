@@ -8,11 +8,11 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email === "admin@flowpilot.ai" && password === " "123456") {
-      localStorage.setItem("flowpilot_user", JSON.stringify({ email }));
-      navigate("/");
+    if (email === "admin@flowpilot.ai" && password === "123456")  {
+       localStorage.setItem("flowpilot_user", JSON.stringify({ email }));
+  navigate("/");
     } else {
-      alert("Invalid credentials");
+     alert("Invalid credentials");
     }
   };
 
