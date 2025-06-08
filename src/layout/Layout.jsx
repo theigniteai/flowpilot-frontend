@@ -1,13 +1,21 @@
-
 import React from "react";
+import { Outlet, useNavigate } from "react-router-dom";
+import Sidebar from "../components/Sidebar";
 
-const Layout = ({ children }) => {
+const Layout = () => {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    const user = localStorage.getItem("flowpilot_user");
+    if (!user) navigate("/login");
+  }, [navigate]);
+
   return (
-    <div className="max-w-screen-lg mx-auto p-6">
-      <header className="bg-gray-800 text-white p-4 rounded-md mb-4">
-        <h1 className="text-xl font-bold">FlowPilot Dashboard</h1>
-      </header>
-      <main>{children}</main>
+    <div className="flex h-screen bg-gray-100 overflow-hidden">
+      <Sidebar />
+      <div className="flex-1 overflow-y-auto p-6">
+        <Outlet />
+      </div>
     </div>
   );
 };
