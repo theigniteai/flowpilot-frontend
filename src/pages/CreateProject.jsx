@@ -1,37 +1,38 @@
 import React, { useState } from "react";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Button } from "@/components/ui/button";
 
 export default function CreateProject() {
-  const [projectName, setProjectName] = useState("");
+  const [formData, setFormData] = useState({
+    name: "",
+    description: "",
+    location: "",
+    budget: "",
+  });
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({
+      ...prev,
+      [name]: value,
+    }));
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    alert(`Project "${projectName}" created!`);
-    setProjectName("");
+    console.log("New Project:", formData);
+    alert("Project Created Successfully!");
+    // TODO: Integrate with backend API
+    setFormData({
+      name: "",
+      description: "",
+      location: "",
+      budget: "",
+    });
   };
 
   return (
-    <div className="max-w-xl mx-auto bg-white shadow rounded-xl p-6">
-      <h2 className="text-xl font-bold text-gray-800 mb-4">Create New Project</h2>
-      <form onSubmit={handleSubmit} className="space-y-4">
-        <div>
-          <label className="block text-sm text-gray-600 mb-1">Project Name</label>
-          <input
-            type="text"
-            required
-            value={projectName}
-            onChange={(e) => setProjectName(e.target.value)}
-            className="w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
-            placeholder="e.g. Real Estate Leads - June"
-          />
-        </div>
-
-        <button
-          type="submit"
-          className="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition"
-        >
-          Create
-        </button>
-      </form>
-    </div>
-  );
-}
+    <div className="max-w-3xl mx-auto p-6 bg-white shadow rounded-xl border">
+      <h1 className="text-2xl font-semibold text-gray-800 mb-6">Create New Project</h1>
+      <form onSubmit={handleSubmit} className="s
