@@ -26,7 +26,7 @@ const Sidebar = () => {
             key={item.name}
             to={item.path}
             className={({ isActive }) =>
-              `flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium ${
+              `flex items-center gap-2 px-3 py-2 rounded-lg text-sm font-medium w-full ${
                 isActive
                   ? "bg-blue-100 text-blue-700"
                   : "text-gray-700 hover:bg-gray-100"
@@ -37,14 +37,14 @@ const Sidebar = () => {
             {item.name}
           </NavLink>
         ))}
+        <button
+          onClick={handleLogout}
+          className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-red-500 hover:bg-red-50 rounded-lg w-full mt-4"
+        >
+          <LogOut size={18} />
+          Logout
+        </button>
       </nav>
-      <button
-        onClick={handleLogout}
-        className="mt-10 flex items-center gap-2 text-sm text-red-500 hover:underline"
-      >
-        <LogOut size={18} />
-        Logout
-      </button>
     </aside>
   );
 };
