@@ -1,64 +1,56 @@
 // src/pages/Leads.jsx
-import React, { useState } from "react";
+import React from "react";
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
-import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
+import { Phone, Mail, MessageSquare } from "lucide-react";
 
-const Leads = () => {
-  const [leads, setLeads] = useState([]);
-  const [leadInput, setLeadInput] = useState("");
+const dummyLeads = [
+  {
+    id: 1,
+    name: "John Doe",
+    email: "john@example.com",
+    phone: "+1 123-456-7890",
+  },
+  {
+    id: 2,
+    name: "Sarah Smith",
+    email: "sarah@example.com",
+    phone: "+1 987-654-3210",
+  },
+  {
+    id: 3,
+    name: "Ayesha Khan",
+    email: "ayesha@example.com",
+    phone: "+971 55 123 4567",
+  },
+];
 
-  const handleAddLead = () => {
-    if (leadInput.trim()) {
-      setLeads([...leads, { name: leadInput, status: "New" }]);
-      setLeadInput("");
-    }
-  };
-
+export default function Leads() {
   return (
     <div className="p-6">
-      <h2 className="text-2xl font-bold mb-4">Lead Manager</h2>
-      <Card className="mb-6">
-        <CardContent className="flex flex-col md:flex-row items-center gap-4 p-4">
-          <Input
-            placeholder="Enter lead name or email"
-            value={leadInput}
-            onChange={(e) => setLeadInput(e.target.value)}
-            className="flex-1"
-          />
-          <Button onClick={handleAddLead}>Add Lead</Button>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardContent className="p-4">
-          <Table>
-            <TableHeader>
-              <TableRow>
-                <TableHead>Name/Email</TableHead>
-                <TableHead>Status</TableHead>
-                <TableHead>Actions</TableHead>
-              </TableRow>
-            </TableHeader>
-            <TableBody>
-              {leads.map((lead, index) => (
-                <TableRow key={index}>
-                  <TableCell>{lead.name}</TableCell>
-                  <TableCell>{lead.status}</TableCell>
-                  <TableCell className="space-x-2">
-                    <Button variant="outline" size="sm">Call</Button>
-                    <Button variant="outline" size="sm">WhatsApp</Button>
-                    <Button variant="outline" size="sm">Email</Button>
-                  </TableCell>
-                </TableRow>
-              ))}
-            </TableBody>
-          </Table>
-        </CardContent>
-      </Card>
+      <h2 className="text-2xl font-bold mb-4">All Leads</h2>
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
+        {dummyLeads.map((lead) => (
+          <Card key={lead.id} className="shadow border rounded-2xl">
+            <CardContent className="p-4 space-y-3">
+              <div className="font-semibold text-lg">{lead.name}</div>
+              <div className="text-sm text-gray-500">{lead.email}</div>
+              <div className="text-sm text-gray-500">{lead.phone}</div>
+              <div className="flex gap-2 pt-2">
+                <Button size="sm" variant="outline">
+                  <Phone className="w-4 h-4 mr-1" /> Call
+                </Button>
+                <Button size="sm" variant="outline">
+                  <MessageSquare className="w-4 h-4 mr-1" /> WhatsApp
+                </Button>
+                <Button size="sm" variant="outline">
+                  <Mail className="w-4 h-4 mr-1" /> Email
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
     </div>
   );
-};
-
-export default Leads;
+}
