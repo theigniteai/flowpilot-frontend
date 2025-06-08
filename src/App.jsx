@@ -5,6 +5,9 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import CreateProject from "./pages/CreateProject";
 import Layout from "./layout/Layout";
+import Sidebar from "./components/Sidebar";
+import Campaigns from "./pages/Campaigns";
+import Settings from "./pages/Settings";
 
 export default function App() {
   return (
