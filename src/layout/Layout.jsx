@@ -1,13 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, useNavigate } from "react-router-dom";
 import Sidebar from "../components/Sidebar";
 
 const Layout = () => {
   const navigate = useNavigate();
 
-  React.useEffect(() => {
-    const user = localStorage.getItem("flowpilot_user");
-    if (!user) navigate("/login");
+  useEffect(() => {
+    // Ensure we're in the browser, not SSR (important for Vercel)
+    if (typeof window !== "undefined") {
+      const user = localStorage.getItem("flowpilot_user");
+      if (!user) {
+        navigate("/login");
+      }
+    }
   }, [navigate]);
 
   return (
