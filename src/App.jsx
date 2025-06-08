@@ -5,9 +5,9 @@ import Signup from "./pages/Signup";
 import Dashboard from "./pages/Dashboard";
 import CreateProject from "./pages/CreateProject";
 import Layout from "./layout/Layout";
-import Sidebar from "./components/Sidebar";
 import Campaigns from "./pages/Campaigns";
 import Settings from "./pages/Settings";
+import Leads from "./pages/Leads"; // <-- Add this
 
 export default function App() {
   return (
@@ -21,7 +21,9 @@ export default function App() {
         <Route path="/" element={<Layout />}>
           <Route index element={<Dashboard />} />
           <Route path="create-project" element={<CreateProject />} />
-          {/* Future pages like /leads or /settings can go here */}
+          <Route path="campaigns" element={<Campaigns />} />
+          <Route path="settings" element={<Settings />} />
+          <Route path="leads" element={<Leads />} />
         </Route>
       </Routes>
     </Router>
