@@ -9,8 +9,7 @@ export default function Signup() {
 
   const handleSignup = (e) => {
     e.preventDefault();
-    const userData = { name, email };
-    localStorage.setItem("flowpilot_user", JSON.stringify(userData));
+    localStorage.setItem("flowpilot_user", JSON.stringify({ name, email }));
     navigate("/");
   };
 
@@ -18,7 +17,7 @@ export default function Signup() {
     <div className="flex items-center justify-center min-h-screen bg-gray-100 px-4">
       <div className="w-full max-w-md bg-white p-8 rounded-2xl shadow-lg">
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
-          Create your FlowPilot account
+          Create your FlowPilot Account
         </h2>
         <form onSubmit={handleSignup} className="space-y-5">
           <div>
