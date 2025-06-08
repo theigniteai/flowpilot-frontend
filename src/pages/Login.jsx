@@ -8,11 +8,14 @@ export default function Login() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    if (email === "admin@flowpilot.ai" && password === "123456")  {
-       localStorage.setItem("flowpilot_user", JSON.stringify({ email }));
-  navigate("/");
+    if (email === "admin@flowpilot.ai" && password === "123456") {
+      localStorage.setItem(
+        "flowpilot_user",
+        JSON.stringify({ name: "Admin", email })
+      );
+      navigate("/");
     } else {
-     alert("Invalid credentials");
+      alert("Invalid credentials");
     }
   };
 
@@ -57,8 +60,11 @@ export default function Login() {
           </button>
         </form>
         <p className="text-sm text-center text-gray-600 mt-4">
-          Don't have an account?{" "}
-          <a href="/signup" className="text-blue-500 hover:underline font-medium">
+          Don&apos;t have an account?{" "}
+          <a
+            href="/signup"
+            className="text-blue-500 hover:underline font-medium"
+          >
             Sign up
           </a>
         </p>
