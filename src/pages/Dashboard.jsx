@@ -4,7 +4,7 @@ export default function Dashboard() {
   const user = JSON.parse(localStorage.getItem("flowpilot_user"));
 
   return (
-    <div className="max-w-5xl mx-auto">
+    <div className="max-w-5xl mx-auto p-6">
       <h1 className="text-2xl font-bold text-gray-800 mb-6">
         Welcome, {user?.name || "Agent"} 👋
       </h1>
@@ -26,7 +26,7 @@ export default function Dashboard() {
 
       <div className="bg-white p-6 rounded-xl shadow border">
         <h2 className="text-lg font-semibold text-gray-800 mb-4">Recent Activity</h2>
-        <ul className="text-sm space-y-3">
+        <ul className="text-sm space-y-3 text-gray-700">
           <li>📞 Called lead “Adeel Ahmed” — 2 mins ago</li>
           <li>📨 Sent WhatsApp to “Fatima Khan” — 15 mins ago</li>
           <li>📝 Created project “Palm Jumeirah Offers” — 1 hour ago</li>
